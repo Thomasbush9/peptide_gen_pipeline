@@ -5,7 +5,7 @@ OUTPUT_FOLDER="${2:-}"
 NUM_DESIGNS="${3:-500}"
 
 BG_SLURM_SCRIPT="/n/home06/tbush/peptide_gen_pipeline/installation_scripts/bg_1st_run.slrm"
-BC_SLURM_SCRIPT=""
+BC_SLURM_SCRIPT="/n/home06/tbush/bindcraft/bindcraft.slurm"
 #create specific output folders:
 BG_OUTPUT_FOLDER="${OUTPUT_FOLDER}/bg/"
 BC_OUTPUT_FOLDER="${OUTPUT_FOLDER}/bc/"
