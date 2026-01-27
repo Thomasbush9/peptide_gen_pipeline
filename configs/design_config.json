@@ -1,0 +1,8 @@
+{
+    "design_path": "/n/home06/tbush/outputs/bc/",
+    "binder_name": "PDL1",
+    "starting_pdb":"/n/home06/tbush/peptide_gen_pipeline/structures/3ch4.pdb1" 
+    "chains": "A",
+    "lengths": [100, 120],
+    "number_of_final_designs": 500
+}
