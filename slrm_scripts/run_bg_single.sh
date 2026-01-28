@@ -16,7 +16,7 @@ fi
 # -------------------------
 # Paths to slurm scripts
 # -------------------------
-BG_SLURM_SCRIPT="/n/home06/tbush/peptide_gen_pipeline/installation_scripts/bg_1st_run.slrm"
+BG_SLURM_SCRIPT="/n/home06/tbush/peptide_gen_pipeline/slrm_scripts/run_bg.slrm"
 
 # -------------------------
 # Output folders
