@@ -31,7 +31,7 @@ mkdir -p "$BG_OUTPUT_FOLDER" "$BC_OUTPUT_FOLDER"
 # Inputs
 # -------------------------
 BG_INPUT_FILE="${INPUT_FOLDER}/design_config.yaml"
-
+#TODO: add a script to automatically fill both settings
 BC_SETTINGS_TARGET="${INPUT_FOLDER}/settings_target/target_settings.json"
 BC_SETTINGS_FILTER="${INPUT_FOLDER}/settings_filters/filter_settings.json"
 BC_SETTINGS_ADV="${INPUT_FOLDER}/settings_adv/adv_settings.json"
@@ -57,8 +57,10 @@ echo "Launching BindCraft..."
 BC_JOBID=$(sbatch \
   --parsable \
   "$BC_SLURM_SCRIPT" \
-  --settings "$BC_SETTINGS_TARGET" )
-
+  --settings "$BC_SETTINGS_TARGET" 
+  # --filters "$BC_SETTINGS_FILTER" \
+  # --advanced "$BC_SETTINGS_ADV")
+  #
 echo "BindCraft JobID: $BC_JOBID"
 
 echo
