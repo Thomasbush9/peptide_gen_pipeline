@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
 # -------------------------
@@ -62,8 +62,6 @@ BC_JOBID=$(sbatch \
   # --advanced "$BC_SETTINGS_ADV")
   #
 echo "BindCraft JobID: $BC_JOBID"
-
-echo
 echo "Submitted jobs:"
 echo "  BoltzGen : $BG_JOBID"
 echo "  BindCraft : $BC_JOBID"
