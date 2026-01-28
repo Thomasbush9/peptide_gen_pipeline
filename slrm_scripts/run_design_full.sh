@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
 # -------------------------
@@ -57,11 +57,7 @@ echo "Launching BindCraft..."
 BC_JOBID=$(sbatch \
   --parsable \
   "$BC_SLURM_SCRIPT" \
-  --input "$INPUT_FOLDER" \
-  --output "$BC_OUTPUT_FOLDER" \
-  --settings "$BC_SETTINGS_TARGET" \
-  --filters "$BC_SETTINGS_FILTER" \
-  --advanced "$BC_SETTINGS_ADV")
+  --settings "$BC_SETTINGS_TARGET" )
 
 echo "BindCraft JobID: $BC_JOBID"
 
