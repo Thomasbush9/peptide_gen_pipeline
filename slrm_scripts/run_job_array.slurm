@@ -7,7 +7,7 @@
 #SBATCH --array=1-2
 #SBATCH --partition=kempner_requeue
 #SBATCH --account=kempner_bsabatini_lab
-#SBATCH --time=06:00:00
+#SBATCH --time=12:00:00
 # Use array-aware log names to avoid clobbering:
 #SBATCH --output=/n/home06/tbush/job_logs/%x.%A_%a.out
 

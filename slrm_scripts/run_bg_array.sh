@@ -2,8 +2,8 @@
 set -e
 set -x
 
-DESIGN_SPEC=/path/to/design/spec.yaml
-MERGED_OUT=/path/to/your/output/directory
+DESIGN_SPEC=/n/home06/tbush/peptide_gen_pipeline/configs/design_config.yaml
+MERGED_OUT=/n/home06/tbush/outputs
 NUM_TASKS=2
 NUM_DESIGNS_PER_TASK=500
 CONDA_ENVIRONMENT=/n/home06/tbush/envs/bg
