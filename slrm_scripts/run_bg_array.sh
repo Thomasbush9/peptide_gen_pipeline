@@ -9,7 +9,7 @@ NUM_DESIGNS_PER_TASK=500
 CONDA_ENVIRONMENT=/n/home06/tbush/envs/bg
 CACHE_DIR="/n/holylabs/bsabatini_lab/Lab/Boltz-project/cache_models/bg/"
 ACCOUNT=kempner_bsabatini_lab
-TIME=05:00:00
+TIME=12:00:00
 
 OUT="${MERGED_OUT}/task-outputs"
 LOGS="${MERGED_OUT}/task-logs"
