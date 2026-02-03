@@ -47,14 +47,21 @@ job_outdir="${outdir}/task-${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}"
 mkdir -p "${job_outdir}"
 
 # Profile the whole boltzgen run (no cudaProfilerApi; NVTX ranges will appear in the report)
-srun --ntasks=1 --gpus-per-task=1 \
+echo "boltzgen path: $(which boltzgen)"
+echo "python path:  $(which python)"
+
+set +e
+srun --export=ALL --ntasks=1 --gpus-per-task=1 \
   nsys profile \
   --force-overwrite=true \
   --sample=none \
   --trace=cuda,nvtx,cudnn,osrt \
   --cudabacktrace=true \
   -o "${job_outdir}/report" \
-  boltzgen run "$design_spec" \
+  "$(which boltzgen)" run "$design_spec" \
   --output "${job_outdir}" \
   --num_designs "$num_designs" \
   "${extra_args[@]}"
+rc=$?
+echo "srun+nsys exit code: $rc"
+set -e
