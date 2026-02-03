@@ -49,11 +49,10 @@ mkdir -p "${job_outdir}"
 # Profile the whole boltzgen run (no cudaProfilerApi; NVTX ranges will appear in the report)
 srun --ntasks=1 --gpus-per-task=1 \
   nsys profile \
-  --gpu-metrics-devices=cuda-visible \
   --force-overwrite=true \
-  --trace=cuda,cudnn,osrt,nvtx \
+  --sample=none \
+  --trace=cuda,nvtx,cudnn,osrt \
   --cudabacktrace=true \
-  -x true \
   -o "${job_outdir}/report" \
   boltzgen run "$design_spec" \
   --output "${job_outdir}" \

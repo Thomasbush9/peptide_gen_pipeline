@@ -38,4 +38,4 @@ elif [[ "$MODE" == "process" ]]; then
 else
   echo "Usage: $0 {submit|process}"
   exit 1
-f
+fi
