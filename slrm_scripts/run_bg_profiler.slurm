@@ -4,11 +4,10 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --gpus-per-node=1
 #SBATCH --mem=64GB
-#SBATCH --array=1-2
 #SBATCH --partition=kempner_requeue
 #SBATCH --account=kempner_bsabatini_lab
 #try with bsabatini_lab
-#SBATCH --time=06:00:00
+#SBATCH --time=03:00:00
 # Use array-aware log names to avoid clobbering:
 #SBATCH --output=/n/home06/tbush/job_logs/%x.%A_%a.out
 
@@ -37,8 +36,7 @@ echo "Design spec: $design_spec"
 echo "Output dir:  $outdir"
 echo "Num designs: $num_designs"
 echo "Conda environment: $conda_environment"
-
-module load python/3.12.8-fasrc01
+module load python/3.12.8-fasrc01 cudnn cuda
 conda activate "$conda_environment"
 
 which python
@@ -48,7 +46,15 @@ nvidia-smi
 job_outdir="${outdir}/task-${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}"
 mkdir -p "${job_outdir}"
 
+# Profile the whole boltzgen run (no cudaProfilerApi; NVTX ranges will appear in the report)
 srun --ntasks=1 --gpus-per-task=1 \
+  nsys profile \
+  --gpu-metrics-devices=cuda-visible \
+  --force-overwrite=true \
+  --trace=cuda,cudnn,osrt,nvtx \
+  --cudabacktrace=true \
+  -x true \
+  -o "${job_outdir}/report" \
   boltzgen run "$design_spec" \
   --output "${job_outdir}" \
   --num_designs "$num_designs" \
